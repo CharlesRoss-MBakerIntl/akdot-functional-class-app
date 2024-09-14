@@ -52,5 +52,7 @@ docker-compose.override.yml
 # Ignore macOS specific files
 *.DS_Store
 
-
+# Ignore Geospatial GeoJSONs
 *Routes.geojson
+*Borough_Census.geojson
+*Census_Tracts.geojson
