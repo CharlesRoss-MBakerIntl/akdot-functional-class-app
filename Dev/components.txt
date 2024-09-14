@@ -1,0 +1,84 @@
+valueBox(value = 123, subtitle = "Not Started", icon = icon("exclamation-circle"), color = "yellow"),
+valueBox(value = 123, subtitle = "In Progress", icon = icon("hourglass-half"), color = "aqua"),
+valueBox(value = "80%", subtitle = "Complete", icon = icon("check"), color = "green"),
+
+
+
+pickerInput(
+                   inputId = "Id008",
+                   label = "Status", 
+                   choices = paste("Badge", c("info", "success", "danger", "primary", 
+                                              "warning")),
+                   multiple = TRUE,
+                   selected = "Badge danger", 
+                   choicesOpt = list(
+                     content = sprintf("<span class='label label-%s'>%s</span>", 
+                                       c("info", "success", "danger", "primary", "warning"), 
+                                       paste("Badge", c("info", "success", "danger", "primary", 
+                                                        "warning"))))
+                 )
+
+
+
+
+pickerInput(
+                   inputId = "status_selector",
+                   label = "", 
+                   choices = list(
+                     "Not Started" = "Not Started",
+                     "In Progress" = "In Progress",
+                     "Completed" = "Completed"
+                   ),
+                   selected = NULL,
+                   multiple = TRUE,
+                   options = pickerOptions(maxOptions = 1, title = "Select Status"),
+                   choicesOpt = list(
+                     content = sprintf(
+                       "<span class='label label-%s'>%s</span>", 
+                       c("warning", "info", "success"),
+                       c("Not Started", "In Progress", "Completed")
+                     )
+                   )
+                 )
+
+
+
+#####   RENDER MAP ON OPEN   ######
+    output$progressMap <- renderLeaflet({
+      
+      # Attempt to Load Map
+      tryCatch({
+        
+        map <- BoroughCensusMap(editorData())
+        
+        
+      }, error = function(e) {
+        
+        #Produce Shiny Alert if Map Fails to Load
+        shinyalert(
+          title = "Failed to Load GeoJSON",
+          text = paste("GeoJSON Failed to Load Locations Map:", e),
+          type = "error"
+        )
+      })
+      
+      
+      #Return Map from Function
+      return(map)
+      
+    }) #CLOSE RENDER MAP
+
+
+
+
+
+pal <- colorFactor(palette = status_colors, levels = status_levels)
+
+
+addPolygons(
+      color = ~pal(Status),          # Border color
+      weight = 2.5,                    # Border weight
+      fillColor = ~pal(Status),      # Fill color
+      fillOpacity = 0.4,
+      group = 'Boroughs'
+    )%>%

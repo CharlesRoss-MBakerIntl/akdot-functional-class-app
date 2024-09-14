@@ -1,0 +1,19 @@
+/* BOX OPTIONS */
+.box {
+  border-top: none !important;
+  border-radius: 5px !important;
+  overflow: hidden;
+}
+
+
+/* BOX HEADER OPTIONS */
+.box-header {
+  background-color: #fa9a00 !important;
+  color: black !important;
+  font-family: 'Arial', sans-serif !important;
+}
+.box-title {
+  font-size: 18px !important;
+  font-weight: bold !important;
+  color: #ffffff !important;
+}

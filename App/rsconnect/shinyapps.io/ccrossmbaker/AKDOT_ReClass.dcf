@@ -1,0 +1,12 @@
+name: AKDOT_ReClass
+title: App
+username: ccrossmbaker
+account: ccrossmbaker
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12566936
+bundleId: 9071113
+url: https://ccrossmbaker.shinyapps.io/AKDOT_ReClass/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

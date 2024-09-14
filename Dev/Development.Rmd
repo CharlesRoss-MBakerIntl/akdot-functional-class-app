@@ -1,0 +1,65 @@
+---
+title: "Development"
+output: html_document
+date: "2024-09-05"
+---
+
+```{r setup, include=FALSE}
+library(sf)
+library(geojsonio)
+library(httr)
+library(jsonlite)
+
+source("C:/git/Route Review/App/Packages/token_generator.R")
+source("C:/git/Route Review/App/Packages/pull_dataframe.R")
+
+#token <- tokenGenerator(session, 'AKDOT_APEX', '@KD0T_@p3x')
+```
+
+
+```{r local}
+
+file <- "C:/git/Route Review/App/Data/Geospatial/Borough_Census.geojson"
+
+#Pull GeoJSON from Local File
+geojson <- sf::st_read(file)
+
+```
+
+
+```{r table}
+
+layer <- "https://services.arcgis.com/r4A0V7UzH9fcLVvv/arcgis/rest/services/Functional_Class_Update/FeatureServer/0"
+
+# Set Query URL
+query_url <- paste0(layer, "/query")
+
+# Set the GeoJSON Query Params
+query_params <- list(
+  token = token,
+  where = "1=1",
+  outFields = "*",
+  returnGeometry = FALSE,
+  f = "json"
+)
+  
+# Send HTTP GET request
+response <- GET(query_url, query = query_params)
+
+# Check if the request was successful
+if (status_code(response) != 200) {
+  stop(paste("HTTP request failed with status:", status_code(response)))
+}
+
+# Write the GeoJSON File from Content
+content <- content(response, as = "text", encoding = "UTF-8")
+
+# Convert to JSON
+json_data <- fromJSON(content)
+
+# Create DF
+data <- as.data.frame(json_data$features$attributes)
+  
+    
+
+```

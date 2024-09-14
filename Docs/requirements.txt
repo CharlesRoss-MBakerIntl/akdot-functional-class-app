@@ -1,0 +1,45 @@
+NOTES FOR ROUTE
+
+Data Broken data by 
+
+Census District or Borough District
+
+
+Tracking 
+
+by 
+
+Analyze by which phase for roads
+
+analyze by which phase for census areas
+
+
+
+Status for roads 
+
+Not Started
+
+
+Connected Stakeholder survey123 section, approve reject or note review of stakelholder request
+
+Need a new submission for classification on route
+
+Add attribute field for updating aligment 
+
+
+
+Data Editors
+
+Dezmen smallwood
+Hannah
+Lauren
+
+
+
+Review Manage
+
+
+
+
+
+

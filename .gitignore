@@ -1,0 +1,56 @@
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+
+# Ignore R environment files
+.Rhistory
+.RData
+.Rproj.user/
+
+# Ignore compiled files
+*.o
+*.a
+*.so
+
+# Ignore log files
+*.log
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor files
+*.swp
+*.swo
+*.idea/
+*.vscode/
+
+# Ignore build directories
+build/
+dist/
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+
+# Ignore configuration files
+*.env
+config.json
+
+# Ignore database files
+*.sqlite
+*.db
+
+# Ignore Docker files
+docker-compose.override.yml
+*.env
+
+# Ignore macOS specific files
+*.DS_Store
+
+
+*Routes.geojson
